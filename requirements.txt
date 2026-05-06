@@ -1,0 +1,13 @@
+langchain_community
+langchain_text_splitters
+langchain_experimental
+langchain_ollama
+langchain_core
+langchain_chroma
+langchain_groq
+fastapi
+uvicorn
+pypdf
+streamlit
+requests
+pydantic
