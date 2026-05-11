@@ -108,14 +108,15 @@ if vectorize:
         ))
         ids.append(i)
 
-
+    # Transform ids to string
+    string_ids = [str(id) for id in ids]
 
 
     vector_store = Chroma.from_documents(
         documents=final_chunks,
         embedding=embed_model,
         persist_directory=vec_db_loc,
-        ids=ids
+        ids=string_ids
     )
 else:
     vector_store = Chroma(
