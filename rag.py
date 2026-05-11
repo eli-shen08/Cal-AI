@@ -31,7 +31,7 @@ async def get_rag_response(question:str):
     template = '''
     You are an expert about Calcutta University who answers questions about the university.
 
-    You will be given some information from Calcutta University to answer questions.
+    You will be given some information about Calcutta University to answer questions.
 
     Your answer must be comprehensive, detailed, and structured with bullet points.
     Synthesize information from all relevant chunks provided below.
@@ -40,7 +40,9 @@ async def get_rag_response(question:str):
 
     Here are some relevant info: {info}
 
-    Here is the question, answer the question based on the provided info : {question} 
+    Here is the question : {question} 
+
+    Answer the question based on the provided info
     '''
 
     prompt = ChatPromptTemplate.from_template(template)

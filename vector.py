@@ -93,8 +93,10 @@ if vectorize:
 
 
     # Turning the chunked_doc into langchain document
+    # Also storing indexes for fast searching
+    ids = []
     final_chunks = []
-    for chunk in chunked_docs:
+    for i, chunk in enumerate(chunked_docs):
         final_chunks.append(Document(
             page_content=chunker.contextualize(chunk),
             metadata={
@@ -104,6 +106,7 @@ if vectorize:
                 "item_label": str(chunk.meta.doc_items[0].label)
             }
         ))
+        ids.append(i)
 
 
 
@@ -111,7 +114,8 @@ if vectorize:
     vector_store = Chroma.from_documents(
         documents=final_chunks,
         embedding=embed_model,
-        persist_directory=vec_db_loc
+        persist_directory=vec_db_loc,
+        ids=ids
     )
 else:
     vector_store = Chroma(
@@ -123,3 +127,4 @@ else:
 retriever = vector_store.as_retriever(
     search_kwargs={"k":7}
 )
+print("Vector store and retriever ready.")
