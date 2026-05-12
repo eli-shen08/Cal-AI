@@ -133,7 +133,10 @@ pip install -r requirements.txt
 
 ---
 
-### Step 2 — Start n8n
+### Step 2 — Start n8n or if you do not want to use n8n
+
+For that in the streamlit_app.py file instread of API_URL = "http://localhost:5678/webhook/rag-query"
+use API_URL = "http://127.0.0.1:8000/" then you can omit the below step for n8n.
 
 ```bash
 # Using Docker
