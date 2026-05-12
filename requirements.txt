@@ -11,4 +11,3 @@ pypdf
 streamlit
 requests
 pydantic
-chunking_evaluation
