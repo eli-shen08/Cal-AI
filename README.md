@@ -150,6 +150,27 @@ Open `http://localhost:5678` and set up the workflow (see n8n Setup below).
 
 ---
 
+## 🔧 n8n Workflow Setup (Omit if you do not want to use n8n)
+
+Create a workflow with 3 nodes connected in a straight line:
+
+**Node 1 — Webhook**
+- Method: `POST`
+- Path: `rag-query`
+- Respond: `Using Respond to Webhook Node`
+
+**Node 2 — HTTP Request**
+- Method: `POST`
+- URL: `http://host.docker.internal:8000/` (Docker) or `http://127.0.0.1:8000/` (npx)
+- Body: JSON with field `query` = `{{ $json.body.query }}`
+
+**Node 3 — Respond to Webhook**
+- Respond With: `JSON`
+- Response Body (Expression mode): `{{ $json }}`
+- Response Code: `200`
+
+Click **Publish** to activate.
+
 ### Step 3 — Start FastAPI
 
 ```bash
@@ -175,28 +196,6 @@ Open Terminal then run
 ```bash
 ollama list
 ```
-
-## 🔧 n8n Workflow Setup
-
-Create a workflow with 3 nodes connected in a straight line:
-
-**Node 1 — Webhook**
-- Method: `POST`
-- Path: `rag-query`
-- Respond: `Using Respond to Webhook Node`
-
-**Node 2 — HTTP Request**
-- Method: `POST`
-- URL: `http://host.docker.internal:8000/` (Docker) or `http://127.0.0.1:8000/` (npx)
-- Body: JSON with field `query` = `{{ $json.body.query }}`
-
-**Node 3 — Respond to Webhook**
-- Respond With: `JSON`
-- Response Body (Expression mode): `{{ $json }}`
-- Response Code: `200`
-
-Click **Publish** to activate.
-
 ---
 
 ## 💬 Example Queries
