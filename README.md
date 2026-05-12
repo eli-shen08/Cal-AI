@@ -172,6 +172,8 @@ Create a workflow with 3 nodes connected in a straight line:
 
 Click **Publish** to activate.
 
+![n8nflow](pic/n8n.png)
+
 ### Step 3 — Start FastAPI
 
 ```bash
@@ -221,6 +223,10 @@ What are the registration requirements for a Ph.D student at Calcutta University
 - n8n runs in Docker so use `host.docker.internal` instead of `127.0.0.1` in the HTTP Request node URL
 
 ---
+
+## Final Product
+
+![query](pic/query.png)
 
 ## 👨‍💻 Built With
 
