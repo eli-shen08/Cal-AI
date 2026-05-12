@@ -2,7 +2,7 @@
 
 > Ask questions about **The Calcutta University Act 1979** and **Ph.D Regulations 2025** and get intelligent, document-grounded answers powered by Groq's LLM and local embeddings.
 
-![first pic](pic/rag.png)
+![firstpic](pic/rag.png)
 ---
 
 ## 📌 What is this?
