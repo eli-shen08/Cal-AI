@@ -14,22 +14,8 @@ Embeddings run locally via Ollama. LLM inference is handled by **Groq** (cloud) 
 
 ## 🏗️ Architecture
 
-```
-Streamlit Frontend
-       ↓  POST { "query": "..." }
-  n8n Webhook  (Docker · port 5678)
-       ↓  POST { "query": "..." }
-  FastAPI Server  (port 8000)
-       ↓  calls get_rag_response()
-  LangChain RAG Chain
-       ↓                    ↓
-  ChromaDB             Groq LLM
-  (vector search)      (llama-3.3-70b-versatile)
-       ↓                    ↓
-         Final Answer
-       ↓
-  Streamlit displays response
-```
+![flow](pic/rag_full_flow.svg)
+
 
 ---
 
@@ -129,7 +115,6 @@ A clean browser-based UI for querying the system.
 - Python 3.10+
 - Ollama installed and running (`ollama pull nomic-embed-text`)
 - Docker Desktop (for n8n)
-- Node.js 18+ with npx (for n8n without Docker)
 - A Groq API key — free at [console.groq.com](https://console.groq.com)
 
 ---
@@ -181,6 +166,12 @@ streamlit run streamlit_app.py
 Open `http://localhost:8501` in your browser. Wait for the ✅ ready message, then start querying.
 
 ---
+
+### Step 5 — Start Ollama in background
+Open Terminal then run
+```bash
+ollama list
+```
 
 ## 🔧 n8n Workflow Setup
 
